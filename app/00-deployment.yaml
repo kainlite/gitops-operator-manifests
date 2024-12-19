@@ -32,10 +32,10 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            cpu: 100m
-            memory: 128Mi
+            cpu: 1000m
+            memory: 1024Mi
           requests:
-            cpu: 50m
+            cpu: 500m
             memory: 100Mi
         ports:
         - name: http
@@ -43,7 +43,13 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
+            path: /reconcile
+            port: http
+          initialDelaySeconds: 60
+          periodSeconds: 120
+        livenessProbe:
+          httpGet:
             path: /health
             port: http
-          initialDelaySeconds: 5
-          periodSeconds: 5
+          failureThreshold: 5
+          periodSeconds: 15
