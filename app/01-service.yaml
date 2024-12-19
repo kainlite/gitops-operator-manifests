@@ -1,0 +1,16 @@
+# Expose the operator with a service
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitops-operator
+  namespace: default
+  labels:
+    app: gitops-operator
+spec:
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: gitops-operator
