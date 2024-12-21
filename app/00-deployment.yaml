@@ -28,9 +28,9 @@ spec:
         livenessProbe:
           failureThreshold: 5
           httpGet:
-            path: /reconcile
+            path: /health
             port: http
-          periodSeconds: 120
+          periodSeconds: 15
         name: gitops-operator
         ports:
         - containerPort: 8000
@@ -38,10 +38,11 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
-            path: /health
+            path: /reconcile
             port: http
-          initialDelaySeconds: 3
-          periodSeconds: 10
+          initialDelaySeconds: 60
+          periodSeconds: 120
+          timeoutSeconds: 30
         resources:
           limits:
             cpu: 1000m
