@@ -1,18 +1,17 @@
-# Main deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gitops-operator
-  namespace: default
+  annotations:
+    gitops.operator.app_repository: git@github.com:kainlite/gitops-operator.git
+    gitops.operator.deployment_path: app/00-deployment.yaml
+    gitops.operator.enabled: 'true'
+    gitops.operator.image_name: kainlite/gitops-operator
+    gitops.operator.manifest_repository: git@github.com:kainlite/gitops-operator-manifests.git
+    gitops.operator.namespace: default
   labels:
     app: gitops-operator
-  annotations: 
-    gitops.operator.enabled: "true"
-    gitops.operator.namespace: "default"
-    gitops.operator.app_repository: "git@github.com:kainlite/gitops-operator.git"
-    gitops.operator.manifest_repository: "git@github.com:kainlite/gitops-operator-manifests.git"
-    gitops.operator.image_name: "kainlite/gitops-operator"
-    gitops.operator.deployment_path: "app/00-deployment.yaml"
+  name: gitops-operator
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -23,21 +22,19 @@ spec:
       labels:
         app: gitops-operator
     spec:
-      serviceAccountName: gitops-operator
       containers:
-      - name: gitops-operator
-        image: kainlite/gitops-operator:latest
+      - image: kainlite/gitops-operator/3dee8c29c00ed3bf2d447bcce4e1fc0ad5a7c131
         imagePullPolicy: Always
-        resources:
-          limits:
-            cpu: 1000m
-            memory: 1024Mi
-          requests:
-            cpu: 500m
-            memory: 100Mi
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /health
+            port: http
+          periodSeconds: 15
+        name: gitops-operator
         ports:
-        - name: http
-          containerPort: 8000
+        - containerPort: 8000
+          name: http
           protocol: TCP
         readinessProbe:
           httpGet:
@@ -45,21 +42,23 @@ spec:
             port: http
           initialDelaySeconds: 60
           periodSeconds: 120
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: http
-          failureThreshold: 5
-          periodSeconds: 15
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 500m
+            memory: 100Mi
         volumeMounts:
-          - mountPath: "/app/id_rsa_demo"
-            name: my-ssh-key
-            readOnly: true
-            subPath: ssh-privatekey
+        - mountPath: /app/id_rsa_demo
+          name: my-ssh-key
+          readOnly: true
+          subPath: ssh-privatekey
+      serviceAccountName: gitops-operator
       volumes:
-        - name: my-ssh-key
-          secret:
-            secretName: my-ssh-key
-            items:
-              - key: ssh-privatekey
-                path: ssh-privatekey
+      - name: my-ssh-key
+        secret:
+          items:
+          - key: ssh-privatekey
+            path: ssh-privatekey
+          secretName: my-ssh-key
