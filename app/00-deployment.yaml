@@ -8,13 +8,11 @@ metadata:
     app: gitops-operator
   annotations: 
     gitops.operator.enabled: "true"
-    gitops.operator.secret_name: "dockerhub"
-    gitops.operator.secret_namespace: "default"
     gitops.operator.namespace: "default"
     gitops.operator.app_repository: "git@github.com:kainlite/gitops-operator.git"
     gitops.operator.manifest_repository: "git@github.com:kainlite/gitops-operator-manifests.git"
     gitops.operator.image_name: "kainlite/gitops-operator"
-    gitops.operator.deployment_path: "app/deployment.yaml"
+    gitops.operator.deployment_path: "app/00-deployment.yaml"
 spec:
   replicas: 1
   selector:
@@ -29,7 +27,7 @@ spec:
       containers:
       - name: gitops-operator
         image: kainlite/gitops-operator:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: 1000m
