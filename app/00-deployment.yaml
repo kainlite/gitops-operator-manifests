@@ -53,3 +53,15 @@ spec:
             port: http
           failureThreshold: 5
           periodSeconds: 15
+        volumeMounts:
+          - mountPath: "/root/.ssh/id_rsa_demo"
+            name: my-ssh-key
+            readOnly: true
+            subPath: ssh-privatekey
+      volumes:
+        - name: my-ssh-key
+          secret:
+            secretName: my-ssh-key
+            items:
+              - key: ssh-privatekey
+                path: ssh-privatekey
