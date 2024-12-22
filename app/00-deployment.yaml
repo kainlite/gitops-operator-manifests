@@ -23,7 +23,7 @@ spec:
         app: gitops-operator
     spec:
       containers:
-      - image: kainlite/gitops-operator:f5e387d1010d242e5b787561d0ccde655f99d776
+      - image: kainlite/gitops-operator:5eda0bad02e98fceb2bcdfe2033d67efd3a074c7
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -42,7 +42,6 @@ spec:
             port: http
           initialDelaySeconds: 60
           periodSeconds: 120
-          timeoutSeconds: 60
         resources:
           limits:
             cpu: 1000m
@@ -51,7 +50,7 @@ spec:
             cpu: 500m
             memory: 100Mi
         volumeMounts:
-        - mountPath: /home/nonroot/.ssh/id_rsa_demo
+        - mountPath: /app/id_rsa_demo
           name: my-ssh-key
           readOnly: true
           subPath: ssh-privatekey
