@@ -50,7 +50,7 @@ spec:
             cpu: 500m
             memory: 100Mi
         volumeMounts:
-        - mountPath: /app/id_rsa_demo
+        - mountPath: /home/nonroot/.ssh/id_rsa_demo
           name: my-ssh-key
           readOnly: true
           subPath: ssh-privatekey
