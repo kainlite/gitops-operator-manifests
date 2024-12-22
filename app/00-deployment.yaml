@@ -23,7 +23,7 @@ spec:
         app: gitops-operator
     spec:
       containers:
-      - image: kainlite/gitops-operator:fa450f200d1c803029a07bf69f9ec36e756b02d5
+      - image: kainlite/gitops-operator:96950836d1ed854a0c32777caae3d91435fec821
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -42,7 +42,6 @@ spec:
             port: http
           initialDelaySeconds: 60
           periodSeconds: 120
-          timeoutSeconds: 30
         resources:
           limits:
             cpu: 1000m
