@@ -23,7 +23,7 @@ spec:
         app: gitops-operator
     spec:
       containers:
-      - image: kainlite/gitops-operator:latest-sha
+      - image: kainlite/gitops-operator:378e51a0ce09b88b5ceb317eaa94de2add3d886c
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
