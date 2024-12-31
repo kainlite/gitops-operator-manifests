@@ -7,11 +7,11 @@ metadata:
     gitops.operator.enabled: 'true'
     gitops.operator.image_name: kainlite/gitops-operator
     gitops.operator.manifest_repository: git@github.com:kainlite/gitops-operator-manifests.git
-    gitops.operator.namespace: default
+    gitops.operator.namespace: gitops-operator
   labels:
     app: gitops-operator
   name: gitops-operator
-  namespace: default
+  namespace: gitops-operator
 spec:
   replicas: 1
   selector:

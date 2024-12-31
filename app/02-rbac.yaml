@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: gitops-operator
-  namespace: default
+  namespace: gitops-operator
 automountServiceAccountToken: true
 
 ---
@@ -31,7 +31,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: gitops-operator
-  namespace: default
+  namespace: gitops-operator
 roleRef:
   kind: ClusterRole
   name: gitops-operator
