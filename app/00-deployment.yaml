@@ -52,14 +52,14 @@ spec:
             memory: 100Mi
         volumeMounts:
         - mountPath: /home/nonroot/.ssh/id_rsa_demo
-          name: my-ssh-key
+          name: ssh-key
           readOnly: true
           subPath: ssh-privatekey
       serviceAccountName: gitops-operator
       volumes:
-      - name: my-ssh-key
+      - name: ssh-key
         secret:
           items:
           - key: ssh-privatekey
             path: ssh-privatekey
-          secretName: my-ssh-key
+          secretName: ssh-key
