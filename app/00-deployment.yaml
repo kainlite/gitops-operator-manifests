@@ -25,9 +25,9 @@ spec:
         app: gitops-operator
     spec:
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
       containers:
       - image: kainlite/gitops-operator:363a8958002ff9eaa5124ef851f453176637d445
         imagePullPolicy: Always
