@@ -8,6 +8,8 @@ metadata:
     gitops.operator.image_name: kainlite/gitops-operator
     gitops.operator.manifest_repository: git@github.com:kainlite/gitops-operator-manifests.git
     gitops.operator.namespace: gitops-operator
+    gitops.operator.ssh_key_name: ssh-key
+    gitops.operator.ssh_key_namespace: gitops-operator
   labels:
     app: gitops-operator
   name: gitops-operator
@@ -50,16 +52,4 @@ spec:
           requests:
             cpu: 500m
             memory: 100Mi
-        volumeMounts:
-        - mountPath: /home/nonroot/.ssh/id_rsa_demo
-          name: ssh-key
-          readOnly: true
-          subPath: ssh-privatekey
       serviceAccountName: gitops-operator
-      volumes:
-      - name: ssh-key
-        secret:
-          items:
-          - key: ssh-privatekey
-            path: ssh-privatekey
-          secretName: ssh-key

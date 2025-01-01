@@ -21,6 +21,13 @@ rules:
     - get
     - watch
     - list
+  - apiGroups:
+    - core
+    resources:
+    - secrets
+    verbs:
+    - get
+    - list
 
 ---
 # Binding the role to the account
