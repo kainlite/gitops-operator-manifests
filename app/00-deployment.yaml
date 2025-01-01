@@ -56,4 +56,16 @@ spec:
           requests:
             cpu: 500m
             memory: 100Mi
+        volumeMounts:
+        - mountPath: /nonexistent/.ssh/known_hosts
+          name: ssh-known-hosts
+          readOnly: true
+          subPath: ssh-known-hosts
       serviceAccountName: gitops-operator
+      volumes:
+      - name: ssh-known-hosts
+        secret:
+          items:
+          - key: ssh-known-hosts
+            path: ssh-known-hosts
+          secretName: ssh-known-hosts
