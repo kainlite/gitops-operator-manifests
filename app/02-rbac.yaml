@@ -28,6 +28,7 @@ rules:
     verbs:
     - get
     - list
+    - watch
 
 ---
 # Binding the role to the account
