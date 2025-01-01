@@ -22,7 +22,7 @@ rules:
     - watch
     - list
   - apiGroups:
-    - core
+    - ""
     resources:
     - secrets
     verbs:
