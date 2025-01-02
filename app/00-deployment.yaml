@@ -24,12 +24,8 @@ spec:
       labels:
         app: gitops-operator
     spec:
-      securityContext:
-        runAsUser: 65534
-        runAsGroup: 65534
-        fsGroup: 65534
       containers:
-      - image: kainlite/gitops-operator:363a8958002ff9eaa5124ef851f453176637d445
+      - image: kainlite/gitops-operator:8943ffd78829897e5d1b997345942c08281cbde9
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -61,6 +57,10 @@ spec:
           name: ssh-known-hosts
           readOnly: true
           subPath: ssh-known-hosts
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsUser: 65534
       serviceAccountName: gitops-operator
       volumes:
       - name: ssh-known-hosts
