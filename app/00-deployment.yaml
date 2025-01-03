@@ -25,7 +25,7 @@ spec:
         app: gitops-operator
     spec:
       containers:
-      - image: kainlite/gitops-operator:9cc9daee3b68bbe753b7545a858c0b9e683752e5
+      - image: kainlite/gitops-operator:93c8975b28c46fa3f3ef7668add5a059633430c5
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
