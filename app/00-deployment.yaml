@@ -48,10 +48,10 @@ spec:
           timeoutSeconds: 60
         resources:
           limits:
-            cpu: 1000m
+            cpu: 500m
             memory: 1024Mi
           requests:
-            cpu: 500m
+            cpu: 100m
             memory: 100Mi
       securityContext:
         fsGroup: 65534
