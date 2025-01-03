@@ -24,6 +24,7 @@ spec:
       labels:
         app: gitops-operator
     spec:
+      nodeName: inst-0uk8y-k3s-servers
       containers:
       - image: kainlite/gitops-operator:93c8975b28c46fa3f3ef7668add5a059633430c5
         imagePullPolicy: Always
@@ -52,20 +53,8 @@ spec:
           requests:
             cpu: 500m
             memory: 100Mi
-        volumeMounts:
-        - mountPath: /nonexistent/.ssh/known_hosts
-          name: ssh-known-hosts
-          readOnly: true
-          subPath: ssh-known-hosts
       securityContext:
         fsGroup: 65534
         runAsGroup: 65534
         runAsUser: 65534
       serviceAccountName: gitops-operator
-      volumes:
-      - name: ssh-known-hosts
-        secret:
-          items:
-          - key: ssh-known-hosts
-            path: ssh-known-hosts
-          secretName: ssh-known-hosts
