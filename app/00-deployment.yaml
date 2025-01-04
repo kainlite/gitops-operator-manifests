@@ -52,9 +52,9 @@ spec:
           requests:
             cpu: 100m
             memory: 100Mi
-      nodeName: inst-0uk8y-k3s-servers
       securityContext:
         fsGroup: 65532
         runAsGroup: 65532
         runAsUser: 65532
+      nodeName: inst-0uk8y-k3s-servers
       serviceAccountName: gitops-operator
