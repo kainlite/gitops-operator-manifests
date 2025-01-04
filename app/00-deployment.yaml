@@ -33,6 +33,9 @@ spec:
             path: /health
             port: http
           periodSeconds: 15
+        env: 
+          - name: RUST_LOG
+            value: info
         name: gitops-operator
         ports:
         - containerPort: 8000
