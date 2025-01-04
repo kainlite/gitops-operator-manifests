@@ -28,7 +28,7 @@ spec:
       - env:
         - name: RUST_LOG
           value: info
-        image: kainlite/gitops-operator:00e42d2b9cb26e124f4cafa9262aeb4b9dfe360f
+        image: kainlite/gitops-operator:3a131d974ca095f4345d03274e3c4a216f8330fe
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
