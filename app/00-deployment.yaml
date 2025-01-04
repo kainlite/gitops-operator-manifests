@@ -54,7 +54,7 @@ spec:
             memory: 100Mi
       nodeName: inst-0uk8y-k3s-servers
       securityContext:
-        fsGroup: 65534
-        runAsGroup: 65534
-        runAsUser: 65534
+        fsGroup: 65532
+        runAsGroup: 65532
+        runAsUser: 65532
       serviceAccountName: gitops-operator
