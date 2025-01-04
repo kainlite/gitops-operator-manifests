@@ -24,9 +24,8 @@ spec:
       labels:
         app: gitops-operator
     spec:
-      nodeName: inst-0uk8y-k3s-servers
       containers:
-      - image: kainlite/gitops-operator:93c8975b28c46fa3f3ef7668add5a059633430c5
+      - image: kainlite/gitops-operator:0299ba6362960a5364d3bd30e3c95bdad0f32ca6
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -53,6 +52,7 @@ spec:
           requests:
             cpu: 100m
             memory: 100Mi
+      nodeName: inst-0uk8y-k3s-servers
       securityContext:
         fsGroup: 65534
         runAsGroup: 65534
