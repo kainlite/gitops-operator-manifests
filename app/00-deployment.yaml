@@ -25,7 +25,10 @@ spec:
         app: gitops-operator
     spec:
       containers:
-      - image: kainlite/gitops-operator:3c0a88249fb61a0a4f4a65295f42b2dee3963c28
+      - env:
+        - name: RUST_LOG
+          value: info
+        image: kainlite/gitops-operator:00e42d2b9cb26e124f4cafa9262aeb4b9dfe360f
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -33,9 +36,6 @@ spec:
             path: /health
             port: http
           periodSeconds: 15
-        env: 
-          - name: RUST_LOG
-            value: info
         name: gitops-operator
         ports:
         - containerPort: 8000
