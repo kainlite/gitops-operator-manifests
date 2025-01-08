@@ -8,6 +8,7 @@ metadata:
     gitops.operator.image_name: kainlite/gitops-operator
     gitops.operator.manifest_repository: git@github.com:kainlite/gitops-operator-manifests.git
     gitops.operator.namespace: gitops-operator
+    gitops.operator.notifications: 'true'
     gitops.operator.ssh_key_name: ssh-key
     gitops.operator.ssh_key_namespace: gitops-operator
   labels:
@@ -28,7 +29,9 @@ spec:
       - env:
         - name: RUST_LOG
           value: info
-        image: kainlite/gitops-operator:3a131d974ca095f4345d03274e3c4a216f8330fe
+        - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+          value: http://simple-collector-headless.observability.svc:4317
+        image: kainlite/gitops-operator:41bf22b4879da8ab606ce0771a2b7fca334f2656
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
