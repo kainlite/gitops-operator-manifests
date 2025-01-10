@@ -8,8 +8,8 @@ metadata:
     gitops.operator.image_name: kainlite/gitops-operator
     gitops.operator.manifest_repository: git@github.com:kainlite/gitops-operator-manifests.git
     gitops.operator.namespace: gitops-operator
-    gitops.operator.notifications_secret_name: 'webhook-secret'
-    gitops.operator.notifications_secret_namespace: 'gitops-operator'
+    gitops.operator.notifications_secret_name: webhook-secret
+    gitops.operator.notifications_secret_namespace: gitops-operator
     gitops.operator.ssh_key_name: ssh-key
     gitops.operator.ssh_key_namespace: gitops-operator
   labels:
@@ -32,7 +32,7 @@ spec:
           value: info
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
           value: http://simple-collector-headless.observability.svc:4317
-        image: kainlite/gitops-operator:2c6a011ba47edd5e5874b51848af0fbf03183741
+        image: kainlite/gitops-operator:cf3fe2287262407e46c74a23161c2ee94c1580fc
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
