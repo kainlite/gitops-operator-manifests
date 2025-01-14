@@ -32,7 +32,7 @@ spec:
           value: info
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
           value: http://simple-collector-headless.observability.svc:4317
-        image: kainlite/gitops-operator:a2768313e38886603668ee067cdec5b40da909fa
+        image: kainlite/gitops-operator:82253e8fa91041cce1b5c71798c3b79ab7d3ae52
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
