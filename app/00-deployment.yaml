@@ -49,8 +49,8 @@ spec:
           httpGet:
             path: /reconcile
             port: http
-          initialDelaySeconds: 60
-          periodSeconds: 120
+          initialDelaySeconds: 3 
+          periodSeconds: 300
           timeoutSeconds: 60
         resources:
           limits:
