@@ -32,7 +32,7 @@ spec:
           value: info
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
           value: http://simple-collector-headless.observability.svc:4317
-        image: kainlite/gitops-operator:462f587fe59f19b5d848991ba675fbba92c54dd9
+        image: kainlite/gitops-operator:a2768313e38886603668ee067cdec5b40da909fa
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
@@ -49,7 +49,7 @@ spec:
           httpGet:
             path: /reconcile
             port: http
-          initialDelaySeconds: 3 
+          initialDelaySeconds: 3
           periodSeconds: 300
           timeoutSeconds: 60
         resources:
