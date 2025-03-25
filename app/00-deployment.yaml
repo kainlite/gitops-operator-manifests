@@ -31,7 +31,11 @@ spec:
         - name: RUST_LOG
           value: info
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-          value: http://simple-collector-headless.observability.svc:4317
+          value: http://jaeger-collector-headless.observability.svc:4317
+        - name: OTEL_EXPORTER_OTLP_LOGS_ENDPOINT
+          value: http://jaeger-collector-headless.observability.svc:4317
+        - name: OTEL_LOGS_EXPORTER
+          value: debug
         image: kainlite/gitops-operator:376192d8bcd0d7c7a7f8c7e162aa026d0db2e32e
         imagePullPolicy: Always
         livenessProbe:
