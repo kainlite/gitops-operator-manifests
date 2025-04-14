@@ -36,7 +36,7 @@ spec:
           value: http://jaeger-collector-headless.observability.svc:4317
         - name: OTEL_LOGS_EXPORTER
           value: debug
-        image: kainlite/gitops-operator:376192d8bcd0d7c7a7f8c7e162aa026d0db2e32e
+        image: kainlite/gitops-operator:f4ce504b86476c20f7027e261864de06e946c9a2
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
