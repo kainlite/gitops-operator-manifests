@@ -30,12 +30,8 @@ spec:
       - env:
         - name: RUST_LOG
           value: info
-        - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-          value: http://jaeger-collector-headless.observability.svc:4317
-        - name: OTEL_EXPORTER_OTLP_LOGS_ENDPOINT
-          value: http://jaeger-collector-headless.observability.svc:4317
-        - name: OTEL_LOGS_EXPORTER
-          value: debug
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: http://tempo.monitoring:4317
         image: kainlite/gitops-operator:3049194c7690213203e10d1aeb945d56f6b01cf6
         imagePullPolicy: Always
         livenessProbe:
