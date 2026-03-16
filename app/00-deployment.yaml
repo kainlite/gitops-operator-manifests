@@ -5,16 +5,16 @@ metadata:
     gitops.operator.app_repository: git@github.com:kainlite/gitops-operator.git
     gitops.operator.deployment_path: app/00-deployment.yaml
     gitops.operator.enabled: 'true'
+    gitops.operator.github_token_secret_name: github-token
+    gitops.operator.github_token_secret_namespace: gitops-operator
     gitops.operator.image_name: kainlite/gitops-operator
     gitops.operator.manifest_repository: git@github.com:kainlite/gitops-operator-manifests.git
     gitops.operator.namespace: gitops-operator
     gitops.operator.notifications_secret_name: webhook-secret
     gitops.operator.notifications_secret_namespace: gitops-operator
-    gitops.operator.registry_secret_url: https://ghcr.io
     gitops.operator.registry_secret_name: ghcr-secret
     gitops.operator.registry_secret_namespace: gitops-operator
-    gitops.operator.github_token_secret_name: github-token
-    gitops.operator.github_token_secret_namespace: gitops-operator
+    gitops.operator.registry_secret_url: https://ghcr.io
     gitops.operator.ssh_key_name: ssh-key
     gitops.operator.ssh_key_namespace: gitops-operator
   labels:
@@ -37,7 +37,7 @@ spec:
           value: info
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: http://tempo.monitoring:4317
-        image: ghcr.io/kainlite/gitops-operator:30d7d79dffcca80e2c568fa7a0f3380d60a3c7c2
+        image: kainlite/gitops-operator:a4e4dbacb762f097a58a32fc362087c58e1baf5e
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
