@@ -10,6 +10,11 @@ metadata:
     gitops.operator.namespace: gitops-operator
     gitops.operator.notifications_secret_name: webhook-secret
     gitops.operator.notifications_secret_namespace: gitops-operator
+    gitops.operator.registry_secret_url: https://ghcr.io
+    gitops.operator.registry_secret_name: ghcr-secret
+    gitops.operator.registry_secret_namespace: gitops-operator
+    gitops.operator.github_token_secret_name: github-token
+    gitops.operator.github_token_secret_namespace: gitops-operator
     gitops.operator.ssh_key_name: ssh-key
     gitops.operator.ssh_key_namespace: gitops-operator
   labels:
@@ -32,7 +37,7 @@ spec:
           value: info
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: http://tempo.monitoring:4317
-        image: kainlite/gitops-operator:30d7d79dffcca80e2c568fa7a0f3380d60a3c7c2
+        image: ghcr.io/kainlite/gitops-operator:30d7d79dffcca80e2c568fa7a0f3380d60a3c7c2
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
