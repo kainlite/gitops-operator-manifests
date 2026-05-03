@@ -4,7 +4,7 @@ metadata:
   annotations:
     gitops.operator.app_repository: git@github.com:kainlite/gitops-operator.git
     gitops.operator.deployment_path: app/00-deployment.yaml
-    gitops.operator.enabled: 'true'
+    gitops.operator.enabled: "true"
     gitops.operator.github_token_secret_name: github-token
     gitops.operator.github_token_secret_namespace: gitops-operator
     gitops.operator.image_name: kainlite/gitops-operator
@@ -14,7 +14,6 @@ metadata:
     gitops.operator.notifications_secret_namespace: gitops-operator
     gitops.operator.registry_secret_name: ghcr-creds
     gitops.operator.registry_secret_namespace: gitops-operator
-    gitops.operator.registry_secret_url: https://ghcr.io
     gitops.operator.ssh_key_name: ssh-key
     gitops.operator.ssh_key_namespace: gitops-operator
   labels:
@@ -32,38 +31,38 @@ spec:
         app: gitops-operator
     spec:
       containers:
-      - env:
-        - name: RUST_LOG
-          value: info
-        - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: http://tempo.monitoring:4317
-        image: ghcr.io/kainlite/gitops-operator:b25afcf6e72e1f7d70c2a44eb3ab0d43fe70b34c
-        imagePullPolicy: Always
-        livenessProbe:
-          failureThreshold: 5
-          httpGet:
-            path: /health
-            port: http
-          periodSeconds: 15
-        name: gitops-operator
-        ports:
-        - containerPort: 8000
-          name: http
-          protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: /reconcile
-            port: http
-          initialDelaySeconds: 3
-          periodSeconds: 300
-          timeoutSeconds: 60
-        resources:
-          limits:
-            cpu: 500m
-            memory: 1024Mi
-          requests:
-            cpu: 100m
-            memory: 100Mi
+        - env:
+            - name: RUST_LOG
+              value: info
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://tempo.monitoring:4317
+          image: ghcr.io/kainlite/gitops-operator:b25afcf6e72e1f7d70c2a44eb3ab0d43fe70b34c
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 15
+          name: gitops-operator
+          ports:
+            - containerPort: 8000
+              name: http
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /reconcile
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 300
+            timeoutSeconds: 60
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1024Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
       securityContext:
         fsGroup: 65532
         runAsGroup: 65532
