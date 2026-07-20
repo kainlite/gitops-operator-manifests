@@ -36,7 +36,7 @@ spec:
           value: info
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: http://tempo.monitoring:4317
-        image: ghcr.io/kainlite/gitops-operator:972adb2e2914715b6575693a7a6a899451b8a438
+        image: ghcr.io/kainlite/gitops-operator:03fd557066132d3ee2ef8f5d31d47c1a00ff6293
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 5
